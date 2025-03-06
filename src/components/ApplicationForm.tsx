@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Rocket, CheckCircle, Lock } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 interface FormData {
   name: string;
@@ -14,6 +15,7 @@ interface FormData {
   currentProject: string;
   goals: string;
   motivation: string;
+  proudestAchievement: string;
 }
 
 const initialFormData: FormData = {
@@ -23,6 +25,7 @@ const initialFormData: FormData = {
   currentProject: '',
   goals: '',
   motivation: '',
+  proudestAchievement: '',
 };
 
 const ApplicationForm = () => {
@@ -38,20 +41,51 @@ const ApplicationForm = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
-      console.log('Form submitted:', formData);
+    try {
+      // Submit to Supabase
+      const { error } = await supabase
+        .from('applications')
+        .insert({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          current_project: formData.currentProject,
+          goals: formData.goals,
+          motivation: formData.motivation,
+          proudest_achievement: formData.proudestAchievement
+        });
+      
+      if (error) {
+        console.error('Error submitting application:', error);
+        toast({
+          title: "Feil ved innsending",
+          description: "Det oppstod en feil. Vennligst prøv igjen senere.",
+          variant: "destructive"
+        });
+        setIsSubmitting(false);
+        return;
+      }
+      
+      console.log('Application submitted successfully');
       toast({
         title: "Søknad mottatt",
         description: "Vi vil gjennomgå din søknad og ta kontakt snart.",
       });
-      setIsSubmitting(false);
       setIsSubmitted(true);
-    }, 1500);
+    } catch (error) {
+      console.error('Error in submission:', error);
+      toast({
+        title: "Feil ved innsending",
+        description: "Det oppstod en teknisk feil. Vennligst prøv igjen senere.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (isSubmitted) {
@@ -166,6 +200,19 @@ const ApplicationForm = () => {
             name="motivation"
             placeholder="Fortell oss hvorfor du vil være en del av dette eksklusive nettverket og hva du kan bidra med."
             value={formData.motivation}
+            onChange={handleChange}
+            required
+            className="min-h-[100px] bg-background/50"
+          />
+        </div>
+        
+        <div className="space-y-2">
+          <Label htmlFor="proudestAchievement">Hva er du mest stolt av å ha oppnådd?</Label>
+          <Textarea
+            id="proudestAchievement"
+            name="proudestAchievement"
+            placeholder="Del en prestasjon eller et mål du har nådd som du er spesielt stolt av."
+            value={formData.proudestAchievement}
             onChange={handleChange}
             required
             className="min-h-[100px] bg-background/50"
