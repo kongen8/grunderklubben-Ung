@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -24,6 +25,10 @@ export default {
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
+				gold: {
+					DEFAULT: 'hsl(var(--gold))',
+					foreground: 'hsl(var(--gold-foreground))'
+				},
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'
@@ -63,6 +68,10 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				}
 			},
+			fontFamily: {
+				inter: ['Inter', 'sans-serif'],
+				playfair: ['"Playfair Display"', 'serif'],
+			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
@@ -84,11 +93,37 @@ export default {
 					to: {
 						height: '0'
 					}
-				}
+				},
+				float: {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-10px)' }
+				},
+				shimmer: {
+					'0%': { backgroundPosition: '-500px 0' },
+					'100%': { backgroundPosition: '500px 0' }
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				float: 'float 6s ease-in-out infinite',
+				shimmer: 'shimmer 2s linear infinite'
+			},
+			transitionTimingFunction: {
+				'in-expo': 'cubic-bezier(0.95, 0.05, 0.795, 0.035)',
+				'out-expo': 'cubic-bezier(0.19, 1, 0.22, 1)',
+			},
+			backgroundImage: {
+				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+				'mesh-gradient': 
+					'radial-gradient(at 40% 20%, hsla(28, 100%, 74%, 0.1) 0px, transparent 50%), ' +
+					'radial-gradient(at 80% 0%, hsla(189, 100%, 56%, 0.05) 0px, transparent 50%), ' +
+					'radial-gradient(at 0% 50%, hsla(355, 100%, 93%, 0.1) 0px, transparent 50%), ' +
+					'radial-gradient(at 80% 50%, hsla(340, 100%, 76%, 0.05) 0px, transparent 50%), ' +
+					'radial-gradient(at 0% 100%, hsla(22, 100%, 77%, 0.1) 0px, transparent 50%), ' +
+					'radial-gradient(at 80% 100%, hsla(242, 100%, 70%, 0.05) 0px, transparent 50%), ' +
+					'radial-gradient(at 0% 0%, hsla(343, 100%, 76%, 0.05) 0px, transparent 50%)',
+				'gold-shimmer': 'linear-gradient(90deg, rgba(212,175,55,0) 0%, rgba(212,175,55,0.4) 50%, rgba(212,175,55,0) 100%)',
 			}
 		}
 	},
