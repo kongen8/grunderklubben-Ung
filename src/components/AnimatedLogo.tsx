@@ -1,6 +1,5 @@
 
 import React, { useEffect, useRef } from 'react';
-import { Flame } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const AnimatedLogo = ({ className }: { className?: string }) => {
@@ -35,16 +34,16 @@ const AnimatedLogo = ({ className }: { className?: string }) => {
     <div 
       ref={logoRef} 
       className={cn(
-        "relative flex items-center justify-center w-12 h-12 rounded-full bg-primary",
+        "relative flex items-center justify-center w-20 h-20",
         "transition-all duration-700 shadow-lg",
         className
       )}
     >
-      <Flame 
-        className="w-6 h-6 text-gold animate-pulse" 
-        strokeWidth={1.5} 
+      <img 
+        src="/lovable-uploads/b8e6a6fd-f5ac-407b-bcfb-63a3b584b463.png" 
+        alt="Grunderklubben Logo" 
+        className="w-full h-full object-contain"
       />
-      <div className="absolute inset-0 bg-gold/20 rounded-full blur-sm"></div>
     </div>
   );
 };

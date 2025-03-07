@@ -1,7 +1,8 @@
 
 import React from 'react';
-import { Flame, Lock } from "lucide-react";
+import { Lock } from "lucide-react";
 import { cn } from "@/lib/utils";
+import AnimatedLogo from './AnimatedLogo';
 
 const Footer = () => {
   return (
@@ -9,10 +10,8 @@ const Footer = () => {
       <div className="max-w-5xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="flex items-center mb-6 md:mb-0">
-            <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center mr-3">
-              <Flame size={16} className="text-gold" />
-            </div>
-            <span className="font-playfair text-lg">Ambisiøse Nettverk</span>
+            <AnimatedLogo className="w-10 h-10 mr-3" />
+            <span className="font-playfair text-lg">Grunderklubben</span>
           </div>
           
           <div className="flex items-center text-sm text-muted-foreground">

@@ -116,14 +116,14 @@ export default {
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 				'mesh-gradient': 
-					'radial-gradient(at 40% 20%, hsla(28, 100%, 74%, 0.1) 0px, transparent 50%), ' +
+					'radial-gradient(at 40% 20%, hsla(240, 100%, 70%, 0.1) 0px, transparent 50%), ' +
 					'radial-gradient(at 80% 0%, hsla(189, 100%, 56%, 0.05) 0px, transparent 50%), ' +
-					'radial-gradient(at 0% 50%, hsla(355, 100%, 93%, 0.1) 0px, transparent 50%), ' +
-					'radial-gradient(at 80% 50%, hsla(340, 100%, 76%, 0.05) 0px, transparent 50%), ' +
-					'radial-gradient(at 0% 100%, hsla(22, 100%, 77%, 0.1) 0px, transparent 50%), ' +
+					'radial-gradient(at 0% 50%, hsla(223, 100%, 80%, 0.1) 0px, transparent 50%), ' +
+					'radial-gradient(at 80% 50%, hsla(240, 100%, 76%, 0.05) 0px, transparent 50%), ' +
+					'radial-gradient(at 0% 100%, hsla(212, 100%, 77%, 0.1) 0px, transparent 50%), ' +
 					'radial-gradient(at 80% 100%, hsla(242, 100%, 70%, 0.05) 0px, transparent 50%), ' +
-					'radial-gradient(at 0% 0%, hsla(343, 100%, 76%, 0.05) 0px, transparent 50%)',
-				'gold-shimmer': 'linear-gradient(90deg, rgba(212,175,55,0) 0%, rgba(212,175,55,0.4) 50%, rgba(212,175,55,0) 100%)',
+					'radial-gradient(at 0% 0%, hsla(222, 100%, 76%, 0.05) 0px, transparent 50%)',
+				'blue-shimmer': 'linear-gradient(90deg, rgba(37,99,235,0) 0%, rgba(37,99,235,0.4) 50%, rgba(37,99,235,0) 100%)',
 			}
 		}
 	},

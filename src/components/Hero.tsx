@@ -1,6 +1,6 @@
 
 import React, { useEffect, useRef } from 'react';
-import { Flame, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import AnimatedLogo from './AnimatedLogo';
 
@@ -51,7 +51,7 @@ const Hero = () => {
         </div>
         
         <div className="mb-6">
-          <span className="inline-block py-1 px-3 mb-4 rounded-full bg-gold/10 text-sm font-medium text-gold border border-gold/20 tracking-wide">
+          <span className="inline-block py-1 px-3 mb-4 rounded-full bg-primary/10 text-sm font-medium text-primary border border-primary/20 tracking-wide">
             Eksklusivt Nettverk
           </span>
         </div>
@@ -60,7 +60,7 @@ const Hero = () => {
           ref={headingRef}
           className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tighter text-balance"
         >
-          For de <span className="glow-gold text-gold">ambisiøse</span> som faktisk 
+          For de <span className="glow-blue text-primary">ambisiøse</span> som faktisk 
           <span className="block mt-2">gjør noe med målene sine</span>
         </h1>
         
@@ -73,7 +73,7 @@ const Hero = () => {
         
         <button 
           onClick={handleScrollDown}
-          className="group inline-flex items-center gap-2 mt-8 text-muted-foreground hover:text-foreground transition-colors duration-300"
+          className="group inline-flex items-center gap-2 mt-8 px-6 py-3 bg-primary text-white rounded-md hover:bg-primary/90 transition-colors duration-300"
         >
           <span>Søk om medlemskap</span>
           <ChevronDown className="w-4 h-4 group-hover:translate-y-1 transition-transform duration-300" />
@@ -86,9 +86,9 @@ const Hero = () => {
       >
         <div 
           onClick={handleScrollDown}
-          className="cursor-pointer w-10 h-16 rounded-full border-2 border-muted flex items-start justify-center p-2"
+          className="cursor-pointer w-10 h-16 rounded-full border-2 border-primary flex items-start justify-center p-2"
         >
-          <div className="w-1 h-3 bg-gold rounded-full animate-bounce mt-2"></div>
+          <div className="w-1 h-3 bg-primary rounded-full animate-bounce mt-2"></div>
         </div>
       </div>
     </section>

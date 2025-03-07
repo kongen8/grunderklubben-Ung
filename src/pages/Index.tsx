@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import Hero from '@/components/Hero';
 import ApplicationForm from '@/components/ApplicationForm';
 import Footer from '@/components/Footer';
-import { ChevronDown, Target, Rocket, Users } from "lucide-react";
+import { ChevronDown, Target, Rocket, Users, Book, Waves, Heart, Brain } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const FeatureItem = ({ icon, title, description }: { 
@@ -41,7 +41,7 @@ const FeatureItem = ({ icon, title, description }: {
       ref={itemRef} 
       className="opacity-0 flex flex-col items-start p-6 rounded-lg border border-border/50 bg-card/30 backdrop-blur-sm"
     >
-      <div className="p-3 mb-4 rounded-lg bg-gold/10 text-gold">
+      <div className="p-3 mb-4 rounded-lg bg-primary/10 text-primary">
         {icon}
       </div>
       <h3 className="text-xl font-semibold mb-2">{title}</h3>
@@ -58,7 +58,7 @@ const Index = () => {
       <section className="relative py-24 px-4">
         <div className="max-w-5xl mx-auto space-y-16">
           <div className="space-y-4 text-center max-w-3xl mx-auto">
-            <span className="inline-block py-1 px-3 rounded-full bg-gold/10 text-sm font-medium text-gold border border-gold/20">
+            <span className="inline-block py-1 px-3 rounded-full bg-primary/10 text-sm font-medium text-primary border border-primary/20">
               Hvorfor bli med?
             </span>
             <h2 className="text-3xl md:text-4xl font-bold">
@@ -89,10 +89,49 @@ const Index = () => {
         </div>
       </section>
       
+      <section className="relative py-24 px-4 bg-primary/5">
+        <div className="max-w-5xl mx-auto space-y-12">
+          <div className="space-y-4 text-center max-w-3xl mx-auto">
+            <span className="inline-block py-1 px-3 rounded-full bg-primary/10 text-sm font-medium text-primary border border-primary/20">
+              Hvem søker vi
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold">
+              Verdier vi ser etter i våre medlemmer
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Vi tror på å samle mennesker som deler visse kjerneverdier for å skape et fruktbart fellesskap.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <FeatureItem
+              icon={<Users className="w-6 h-6" />}
+              title="Samarbeidsånd"
+              description="Vi ser etter mennesker som forstår verdien av å løfte hverandre opp, dele kunnskap, og skape synergier sammen."
+            />
+            <FeatureItem
+              icon={<Heart className="w-6 h-6" />}
+              title="Sunn Livsstil"
+              description="Medlemmer som prioriterer både mental og fysisk helse, og forstår at en balansert livsstil er nøkkelen til langsiktig suksess."
+            />
+            <FeatureItem
+              icon={<Waves className="w-6 h-6" />}
+              title="Jevnlig Trening"
+              description="Vi verdsetter personer som inkluderer fysisk aktivitet i sin rutine og forstår forbindelsen mellom en sunn kropp og et skarpt sinn."
+            />
+            <FeatureItem
+              icon={<Brain className="w-6 h-6" />}
+              title="Kontinuerlig Læring"
+              description="Medlemmer som er dedikert til livslang læring, nysgjerrighet og personlig vekst gjennom nye erfaringer og kunnskap."
+            />
+          </div>
+        </div>
+      </section>
+      
       <section id="application-form" className="relative py-20 px-4 mb-16">
         <div className="relative z-10 max-w-5xl mx-auto space-y-10">
           <div className="space-y-4 text-center max-w-3xl mx-auto mb-10">
-            <span className="inline-block py-1 px-3 rounded-full bg-gold/10 text-sm font-medium text-gold border border-gold/20">
+            <span className="inline-block py-1 px-3 rounded-full bg-primary/10 text-sm font-medium text-primary border border-primary/20">
               Begrenset Antall Plasser
             </span>
             <h2 className="text-3xl md:text-4xl font-bold">
