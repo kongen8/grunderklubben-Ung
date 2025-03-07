@@ -80,17 +80,32 @@
     @apply border-border;
   }
   
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
   body {
     @apply bg-background text-foreground font-inter antialiased;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+    overflow-x: hidden;
   }
   
   h1, h2, h3, h4, h5, h6 {
     @apply font-playfair tracking-tighter;
   }
+  
+  input, textarea, select, button {
+    @apply text-base sm:text-sm;
+    font-feature-settings: "ss01";
+  }
 }
 
 @layer utilities {
+  .text-xxs {
+    font-size: 0.625rem;
+    line-height: 0.875rem;
+  }
+  
   .glow-blue {
     text-shadow: 0 0 8px rgba(37, 99, 235, 0.6);
   }
@@ -105,6 +120,18 @@
   
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-400;
+  }
+  
+  .touch-callout-none {
+    -webkit-touch-callout: none;
+  }
+  
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  
+  .safe-top {
+    padding-top: env(safe-area-inset-top, 0px);
   }
 }
 
@@ -149,6 +176,14 @@
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+/* Media query to reduce or disable animations on devices that prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .appear, .fade-in, .slide-up {
+    animation: none;
+    opacity: 1;
   }
 }
 

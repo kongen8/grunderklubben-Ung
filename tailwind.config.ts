@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -19,6 +18,9 @@ export default {
 			}
 		},
 		extend: {
+			fontSize: {
+				'xxs': '0.625rem',
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -124,6 +126,10 @@ export default {
 					'radial-gradient(at 80% 100%, hsla(242, 100%, 70%, 0.05) 0px, transparent 50%), ' +
 					'radial-gradient(at 0% 0%, hsla(222, 100%, 76%, 0.05) 0px, transparent 50%)',
 				'blue-shimmer': 'linear-gradient(90deg, rgba(37,99,235,0) 0%, rgba(37,99,235,0.4) 50%, rgba(37,99,235,0) 100%)',
+			},
+			spacing: {
+				'safe-bottom': 'env(safe-area-inset-bottom, 0px)',
+				'safe-top': 'env(safe-area-inset-top, 0px)',
 			}
 		}
 	},
