@@ -47,7 +47,7 @@ const ApplicationForm = () => {
     
     try {
       // Submit to Supabase
-      const { error } = await supabase
+      const { error: dbError } = await supabase
         .from('applications')
         .insert({
           name: formData.name,
@@ -59,22 +59,37 @@ const ApplicationForm = () => {
           proudest_achievement: formData.proudestAchievement
         });
       
-      if (error) {
-        console.error('Error submitting application:', error);
+      if (dbError) {
+        console.error('Error submitting application to database:', dbError);
         toast({
           title: "Feil ved innsending",
-          description: "Det oppstod en feil. Vennligst prøv igjen senere.",
+          description: "Det oppstod en feil ved lagring av data. Vennligst prøv igjen senere.",
           variant: "destructive"
         });
         setIsSubmitting(false);
         return;
       }
       
-      console.log('Application submitted successfully');
-      toast({
-        title: "Søknad mottatt",
-        description: "Vi vil gjennomgå din søknad og ta kontakt snart.",
+      // Send email notification
+      const emailResponse = await supabase.functions.invoke('send-application', {
+        body: formData,
       });
+
+      if (!emailResponse.data?.success) {
+        console.error('Error sending notification email:', emailResponse.error);
+        // We continue despite email error since the data is saved to the database
+        toast({
+          title: "Søknad mottatt",
+          description: "Vi vil gjennomgå din søknad og ta kontakt snart. (E-postbekreftelse kunne ikke sendes)",
+        });
+      } else {
+        console.log('Application submitted and email notification sent successfully');
+        toast({
+          title: "Søknad mottatt",
+          description: "Vi vil gjennomgå din søknad og ta kontakt snart.",
+        });
+      }
+      
       setIsSubmitted(true);
     } catch (error) {
       console.error('Error in submission:', error);
